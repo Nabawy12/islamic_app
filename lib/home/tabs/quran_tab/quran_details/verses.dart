@@ -5,7 +5,7 @@ class versess extends StatelessWidget {
    versess({required this.verse});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Container(
       padding: EdgeInsetsDirectional.symmetric(horizontal: 15,vertical: 15),
       alignment: Alignment.center,
