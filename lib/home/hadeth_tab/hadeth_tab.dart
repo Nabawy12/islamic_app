@@ -1,13 +1,26 @@
-import 'package:flutter/material.dart';
+import 'dart:ffi';
 
-class hadethTab extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:untitled/home/hadeth_tab/hadeth_details.dart';
+import 'package:untitled/home/hadeth_tab/hadeth_title.dart';
+
+class hadethTab extends StatefulWidget {
   const hadethTab({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<hadethTab> createState() => _hadethTabState();
+}
 
+class _hadethTabState extends State<hadethTab> {
+  List<HadethItem> hadethlistitem = [] ;
+  @override
+  Widget build(BuildContext context) {
+    loadhadethFile();
     return Scaffold(
-      body: Column(
+      body:
+      hadethlistitem.isEmpty ? Center(child: CircularProgressIndicator(),) :
+      Column(
         children: [
           Expanded(flex:1,child: Image(image: AssetImage('assets/images/hadith_header.png'))),
           Container(
@@ -24,10 +37,9 @@ class hadethTab extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.builder(
-                    itemCount: 50,
+                    itemCount: hadethlistitem.length,
                     itemBuilder: (context, index) =>
-                        Text("الحديث رقم ${index+1}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),
-                        ),
+                        hadeth_title(hadethItem: hadethlistitem[index],index: index+1),
                   ),
                 ),
               ],
@@ -36,12 +48,33 @@ class hadethTab extends StatelessWidget {
         ],
       ),
     );
+
   }
 
-}
-class hadethArguments {
+  void loadhadethFile()async{
+    String fileContent = await rootBundle.loadString("assets/hadeth/ahadeth.txt") ;
 
-  String hadetharguments;
-  int index ;
-  hadethArguments({required this.hadetharguments, required this.index});
+    List<String> allAhadeth = fileContent.trim().split("#") ;
+
+    for(int i = 0 ; i<allAhadeth.length; i++ ){
+      List<String> hadethlines = allAhadeth[i].trim().split("\n");
+      String hadethTitle = hadethlines[0];
+      String hadethContent = hadethlines.join("\n");
+
+      HadethItem hadethItem = HadethItem(HadethContent: hadethContent, HadethTitle: "الحديث رقم");
+
+      hadethlistitem.add(hadethItem) ;
+      setState(() {
+
+      });
+
+    }
+
+  }
+}
+class HadethItem{
+  String HadethTitle ;
+  String HadethContent ;
+  HadethItem({required this.HadethContent, required this.HadethTitle});
+
 }

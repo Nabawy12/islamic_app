@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:untitled/home/hadeth_tab/hadeth_details.dart';
 import 'package:untitled/home/homeScreen.dart';
 import 'package:untitled/home/tabs/quran_tab/quran_details/quran_details.dart';
 
@@ -24,6 +25,8 @@ class MyApp extends StatelessWidget {
        splashScreen.routeName : (_) => splashScreen(),
         homeScreen.routeName: (_) => homeScreen(),
         quran_details.routeName: (_) => quran_details(),
+        hadeth_details.routeName: (_) => hadeth_details(),
+
 
       },
 
