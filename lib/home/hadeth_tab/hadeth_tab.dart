@@ -1,8 +1,7 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:untitled/home/hadeth_tab/hadeth_details.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:untitled/home/hadeth_tab/hadeth_title.dart';
 
 class hadethTab extends StatefulWidget {
@@ -27,9 +26,9 @@ class _hadethTabState extends State<hadethTab> {
             alignment: Alignment.center,
             //width: double.infinity,
             decoration: BoxDecoration(
-                border: Border.symmetric(horizontal: BorderSide(color: Colors.black,width: 2))
+                border: Border.symmetric(horizontal: BorderSide(color: Theme.of(context).dividerColor,width: 2))
             ),
-            child: Text("الأحاديث",style: TextStyle(fontSize:25,fontWeight: FontWeight.w600 ),),
+            child: Text(AppLocalizations.of(context)!.hadeth_title,style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 25),),
           ),
           Expanded(
             flex: 2,
@@ -37,7 +36,7 @@ class _hadethTabState extends State<hadethTab> {
               children: [
                 Expanded(
                   child: ListView.builder(
-                    itemCount: hadethlistitem.length,
+                    itemCount: 50,
                     itemBuilder: (context, index) =>
                         hadeth_title(hadethItem: hadethlistitem[index],index: index+1),
                   ),

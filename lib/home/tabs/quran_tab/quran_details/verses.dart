@@ -9,7 +9,7 @@ class versess extends StatelessWidget {
     return Container(
       padding: EdgeInsetsDirectional.symmetric(horizontal: 15,vertical: 15),
       alignment: Alignment.center,
-      child: Text(verse,textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),),
+      child: Text(verse,textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodySmall,),
     );
   }
 }

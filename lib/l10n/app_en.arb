@@ -1,0 +1,36 @@
+        {
+
+        "app_title"  :    "Islami" ,
+
+        "quran_title_1"  :    "Name of Picture" ,
+
+        "quran_title_2"  :    "Number of Verses" ,
+
+
+        "button_sheet_1"  :    "Quran" ,
+
+        "button_sheet_2"  :    "Hadeth" ,
+
+        "button_sheet_3"  :    "Sebha" ,
+
+
+        "button_sheet_4"  :    "Radio" ,
+
+
+        "hadeth_title"    :    "Hadiths",
+
+        "sebha_title"     :   "Number Of Praises",
+
+         "sebha_button_1"     :   "Praise God",
+
+         "sebha_button_2"     :   "Thank God" ,
+
+
+         "sebha_button_3"     :   "Allah is the greatest"
+
+
+
+
+
+
+        }
