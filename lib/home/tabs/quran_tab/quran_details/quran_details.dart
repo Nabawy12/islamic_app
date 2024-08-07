@@ -23,7 +23,7 @@ class _quran_detailsState extends State<quran_details> {
       decoration: BoxDecoration(
           image:  DecorationImage(
               fit:BoxFit.fill ,
-              image: AssetImage("assets/images/background.png",)
+              image: AssetImage("assets/images/background.png")
           )
       ),
       child: Scaffold(

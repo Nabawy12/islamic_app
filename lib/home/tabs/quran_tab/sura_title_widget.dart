@@ -22,13 +22,13 @@ class suraTitleWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(child: Text(versNumber,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,),textAlign: TextAlign.center,)),
+              Expanded(child: Text(versNumber,style: Theme.of(context).textTheme.bodySmall,textAlign: TextAlign.center,)),
               Container(
                 width: 2,
-                color: Colors.black,
+                color: Theme.of(context).dividerColor,
 
               ),
-              Expanded(child: Text(SuraTitleWidget,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),textAlign: TextAlign.center,)),
+              Expanded(child: Text(SuraTitleWidget,style: Theme.of(context).textTheme.bodySmall,textAlign: TextAlign.center,)),
             ],
           ),
         ),
