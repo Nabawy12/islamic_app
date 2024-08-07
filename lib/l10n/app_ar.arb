@@ -1,0 +1,30 @@
+{
+
+  "app_title"  :    "إسلامي" ,
+
+  "quran_title_1"  :    "إسم السورة" ,
+
+  "quran_title_2"  :    "عدد الآيات" ,
+
+
+  "button_sheet_1"  :    "القراءن" ,
+
+  "button_sheet_2"  :    "الحديث" ,
+
+  "button_sheet_3"  :    "السبحه" ,
+
+
+  "button_sheet_4"  :    "الراديو" ,
+
+
+  "hadeth_title"    :    "الأحاديث" ,
+
+  "sebha_title"     :   "عدد التسبيحات",
+
+  "sebha_button_1"     :   "سبحان الله",
+
+  "sebha_button_2"     :   "الحمد الله" ,
+
+
+  "sebha_button_3"     :   "الله اكبر"
+}

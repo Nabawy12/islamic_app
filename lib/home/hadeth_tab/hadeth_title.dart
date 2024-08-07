@@ -19,7 +19,7 @@ class hadeth_title extends StatelessWidget {
       child: Container(
         child: Padding(
           padding: EdgeInsets.all(8),
-          child:  Text( "${hadethItem.HadethTitle}  ${index}",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),
+          child:  Text( "${hadethItem.HadethTitle}  ${index}",textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
       ),

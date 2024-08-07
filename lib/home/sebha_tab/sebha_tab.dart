@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class sebhaTab extends StatefulWidget {
 
@@ -9,10 +10,12 @@ class sebhaTab extends StatefulWidget {
 }
 
 class _sebhaTabState extends State<sebhaTab> {
+  String text = "";
   int sebha = 0 ;
-  String text = "سبحان الله" ;
+  double turns = 0.0 ;
   @override
   Widget build(BuildContext context) {
+    if(sebha==0){text = AppLocalizations.of(context)!.sebha_button_1;}
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -21,13 +24,20 @@ class _sebhaTabState extends State<sebhaTab> {
             flex: 1,
               child: Container(
                 alignment: Alignment.center,
-                  child: Image(image: AssetImage("assets/images/body_of_sebha.png")))),
+                  child:
+                  AnimatedRotation(
+                    turns: turns,
+                      duration: Duration(seconds: 1),
+                      child: Image(image: AssetImage("assets/images/body_of_sebha.png")),
+                  )
+              )
+          ),
           Expanded(
             flex: 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("عدد التسبيحات",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25),),
+                Text(AppLocalizations.of(context)!.sebha_title,textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 25),),
                 SizedBox(height: 100,),
                 Container(
                   decoration: BoxDecoration(
@@ -37,29 +47,36 @@ class _sebhaTabState extends State<sebhaTab> {
                     child:
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("$sebha",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w400,fontSize: 25),),
+                      child: Text("$sebha",textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 30),),
                     )
                 ),
                 SizedBox(height: 50,),
                 ElevatedButton(
                     style:ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
+                        borderRadius: BorderRadius.circular(20),
                       ),
+                      backgroundColor: Theme.of(context).buttonColor,
                     ),
                     onPressed: (){
                       sebha++;
+                      turns += 1 / 30 ;
+
                       if(sebha==33) {
-                        text = "الحمدالله";
+                        text = AppLocalizations.of(context)!.sebha_button_2;
                       }
                       if(sebha==63){
-                        text = "الله اكبر";
+                        text = AppLocalizations.of(context)!.sebha_button_3;
+                      }
+
+                      if(sebha==93){
+                        sebha = 0;
                       }
                       setState(() {
 
                       });
                     },
-                    child: Text(text,style: TextStyle(fontWeight: FontWeight.w400,fontSize: 25))
+                    child: Text(text,style: Theme.of(context).textTheme.bodyMedium,),
                 )
 
               ],

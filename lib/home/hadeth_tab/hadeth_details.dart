@@ -17,7 +17,7 @@ class _hadeth_detailsState extends State<hadeth_details> {
       decoration: BoxDecoration(
           image:  DecorationImage(
               fit:BoxFit.fill ,
-              image: AssetImage("assets/images/background.png",)
+              image: AssetImage("assets/images/background.png")
           )
       ),
       child:  Scaffold(
@@ -28,7 +28,7 @@ class _hadeth_detailsState extends State<hadeth_details> {
               margin: EdgeInsetsDirectional.symmetric(horizontal: 29,vertical: 55),
 
               child: Container(
-                child: Text(hadethcontent.HadethContent,textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),),
+                child: Text(hadethcontent.HadethContent,textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodySmall),
               )
               ),
           ),

@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/home/hadeth_tab/hadeth_details.dart';
 import 'package:untitled/home/homeScreen.dart';
 import 'package:untitled/home/tabs/quran_tab/quran_details/quran_details.dart';
-
+import 'package:untitled/providers/theme/theme.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:untitled/splash.dart';
+import 'package:untitled/style/dark_mode%20&&%20light_mode.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent
   ));
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => theme_providers(),
+      child: MyApp()
+  )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +27,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var provider  = Provider.of<theme_providers>(context);
     return MaterialApp(
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+      supportedLocales: [
+        Locale('ar'),// Arabic
+        Locale('en'),// English
+      ],
+      locale: Locale(provider.currentLanguage_en),
+
       debugShowCheckedModeBanner: false,
       routes: {
        splashScreen.routeName : (_) => splashScreen(),
@@ -30,26 +51,9 @@ class MyApp extends StatelessWidget {
 
       },
 
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFFB7935F),
-            primary: Color(0xFFB7935F),
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: Colors.black,
-          showSelectedLabels: true,
-          showUnselectedLabels: false,
-          selectedIconTheme:  IconThemeData(size: 35,) ,
-          unselectedIconTheme: IconThemeData(size: 25,) ,
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          iconTheme: IconThemeData(color: Colors.black),
-          centerTitle: true,
-          titleTextStyle: TextStyle(fontSize: 30,fontWeight: FontWeight.w700,color: Colors.black)
-        ),
-        scaffoldBackgroundColor: Colors.transparent,
-      ),
+      theme: style_mode.LightTheme,
+      themeMode: provider.currenTheme,
+      darkTheme: style_mode.DarkTheme
     );
   }
 }
